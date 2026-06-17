@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chief Admin - Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar-panel">
+            <div class="window-controls">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            
+            <div class="profile-block">
+                <div class="avatar-wrap">
+                    <img src="logo/Chief_Logo.webp" alt="Avatar" style="object-fit: contain; padding: 5px; background: #000;">
+                    <span class="status-dot"></span>
+                </div>
+                <h3 class="profile-name">Chief Admin</h3>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="active" data-tab="dashboard">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg> Analytics
+                    </li>
+                    <li data-tab="products">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg> Corporate
+                    </li>
+                    <li data-tab="articles">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Blog Posts
+                    </li>
+                    <li data-tab="bookings">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Manual
+                    </li>
+                    <li data-tab="banners">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> Banners
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-bottom">
+                <div class="add-action-box" onclick="openModal('productModal')">
+                    <button class="btn-add-icon">+</button>
+                    <p>Add new products<br><span>Or use drag & drop</span></p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-panel">
+            
+            <!-- Top Stats Panel -->
+            <section class="stats-panel">
+                <div class="stats-header">
+                    <div class="brand-title">
+                        <div class="brand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"></path></svg></div>
+                        <h2>Chief Supplies LLC</h2>
+                        <span class="subtitle">• Account Manager</span>
+                    </div>
+                    <div class="stats-actions">
+                        <button class="icon-btn search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+                        <button class="btn-view-all">View all</button>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <p class="stat-label">Total Products</p>
+                        <h3 class="stat-value" id="stat-products">0</h3>
+                        <div class="stat-sub">
+                            <span>Featured</span> <span>-</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-label">Total Articles</p>
+                        <h3 class="stat-value" id="stat-articles">0</h3>
+                        <div class="stat-sub">
+                            <span>Published</span> <span>-</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-label">Pending Bookings</p>
+                        <h3 class="stat-value" id="stat-bookings">0</h3>
+                        <div class="stat-sub">
+                            <span>Confirmed</span> <span>-</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-label">Monthly Revenue</p>
+                        <h3 class="stat-value">Rp 12.5M</h3>
+                        <div class="stat-sub">
+                            <span>Transactions</span> <span>124</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Dynamic Tab Content -->
+            <div class="tabs-wrapper">
+            
+                <!-- DASHBOARD TAB -->
+                <div class="tab-content active" id="tab-dashboard">
+                    <!-- Cards Panel (Like wallets) -->
+                    <section class="cards-panel">
+                        <div class="panel-header">
+                            <div class="tab-links">
+                                <button class="active">Payment Wallets</button>
+                                <button>Tracked wallets</button>
+                            </div>
+                            <div class="action-links">
+                                <button><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg> Transfer</button>
+                                <button><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"></path><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><path d="M7 23l-4-4 4-4"></path><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg> Convert</button>
+                                <button><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5"></path><path d="M5 12l7 7 7-7"></path></svg> Receive</button>
+                            </div>
+                        </div>
+                        
+                        <div class="cards-row">
+                            <div class="gradient-card green">
+                                <div class="card-top">
+                                    <div class="coin-icon">T</div> <span class="card-id">•••• 4567</span>
+                                </div>
+                                <div class="card-bottom">
+                                    <p class="card-name">Native Wallet</p>
+                                    <h3 class="card-amount">$ 11,412,068<span class="decimal">.34</span></h3>
+                                </div>
+                            </div>
+                            <div class="gradient-card beige">
+                                <div class="card-top">
+                                    <div class="coin-icon">T</div> <span class="card-id">•••• 242B</span>
+                                </div>
+                                <div class="card-bottom">
+                                    <p class="card-name">MetaMask</p>
+                                    <h3 class="card-amount">$ 886,482<span class="decimal">.24</span></h3>
+                                </div>
+                            </div>
+                            <div class="gradient-card light">
+                                <div class="card-top">
+                                    <div class="coin-icon">US</div> <span class="card-id">•••• 5880</span>
+                                </div>
+                                <div class="card-bottom">
+                                    <p class="card-name">USD Account</p>
+                                    <h3 class="card-amount">$ 398,336<span class="decimal">.15</span></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- PRODUCTS TAB -->
+                <div class="tab-content" id="tab-products">
+                    <section class="list-panel">
+                        <div class="list-header">
+                            <div>
+                                <h2>Products</h2>
+                                <p>Monitor your active product catalog</p>
+                            </div>
+                            <div class="list-actions">
+                                <button class="icon-btn search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+                                <button class="btn-view-all" onclick="openModal('productModal')">Add New</button>
+                            </div>
+                        </div>
+                        <div class="list-body" id="products-list">
+                            <!-- Rows rendered by JS -->
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- ARTICLES TAB -->
+                <div class="tab-content" id="tab-articles">
+                    <section class="list-panel">
+                        <div class="list-header">
+                            <div>
+                                <h2>Articles</h2>
+                                <p>Manage your journal and blog posts</p>
+                            </div>
+                            <div class="list-actions">
+                                <button class="btn-view-all" onclick="openModal('articleModal')">Add New</button>
+                            </div>
+                        </div>
+                        <div class="list-body" id="articles-list">
+                            <!-- Rows rendered by JS -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- BOOKINGS TAB -->
+                <div class="tab-content" id="tab-bookings">
+                    <section class="list-panel">
+                        <div class="list-header">
+                            <div>
+                                <h2>Bookings</h2>
+                                <p>Monitor customer reservations</p>
+                            </div>
+                        </div>
+                        <div class="list-body" id="bookings-list">
+                            <!-- Rows rendered by JS -->
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- BANNERS TAB -->
+                <div class="tab-content" id="tab-banners">
+                    <section class="list-panel">
+                        <div class="list-header">
+                            <div>
+                                <h2>Promo Banners</h2>
+                                <p>Manage your promotional banners on the storefront</p>
+                            </div>
+                        </div>
+                        <div class="list-body" id="banners-list">
+                            <!-- Rows rendered by JS -->
+                        </div>
+                    </section>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modals -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('productModal')">&times;</span>
+            <h2 id="productModalTitle">Add Product</h2>
+            <form id="productForm">
+                <input type="hidden" id="prod-id">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="prod-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Subtitle</label>
+                    <input type="text" id="prod-subtitle">
+                </div>
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label>Price</label>
+                        <input type="number" id="prod-price" required>
+                    </div>
+                    <div class="form-group half">
+                        <label>Old Price (Optional)</label>
+                        <input type="number" id="prod-old-price">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label>Badge Text</label>
+                        <input type="text" id="prod-badge" placeholder="e.g. NEW, SALE">
+                    </div>
+                    <div class="form-group half">
+                        <label>Badge Color</label>
+                        <select id="prod-badge-color">
+                            <option value="blue">Blue</option>
+                            <option value="orange">Orange</option>
+                            <option value="black">Black</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Image Upload</label>
+                    <input type="file" id="prod-image" accept="image/*">
+                    <small>Leave empty to keep existing image</small>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="prod-featured"> Show on Homepage
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Article Modal -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('articleModal')">&times;</span>
+            <h2 id="articleModalTitle">Add Article</h2>
+            <form id="articleForm">
+                <input type="hidden" id="art-id">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="art-title" required>
+                </div>
+                <div class="form-group">
+                    <label>Position Class</label>
+                    <input type="text" id="art-pos" placeholder="e.g. pos-1, pos-2">
+                </div>
+                <div class="form-group">
+                    <label>Image Upload</label>
+                    <input type="file" id="art-image" accept="image/*">
+                    <small>Leave empty to keep existing</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Article</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Banner Modal -->
+    <div id="bannerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('bannerModal')">&times;</span>
+            <h2 id="bannerModalTitle">Edit Banner</h2>
+            <form id="bannerForm">
+                <input type="hidden" id="ban-id">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="ban-title" required>
+                </div>
+                <div class="form-group">
+                    <label>Subtitle / Description</label>
+                    <input type="text" id="ban-subtitle">
+                </div>
+                <div class="form-group">
+                    <label>Price Text (HTML supported)</label>
+                    <input type="text" id="ban-price" placeholder="e.g. Starting at<br><strong>Rp 250.000</strong>">
+                </div>
+                <div class="form-group">
+                    <label>Badge Text</label>
+                    <input type="text" id="ban-badge" placeholder="e.g. SHOP ALL">
+                </div>
+                <div class="form-group">
+                    <label>Background Class</label>
+                    <select id="ban-bg">
+                        <option value="bg-gradient">Blue Gradient (bg-gradient)</option>
+                        <option value="bg-blue">Cyan Solid (bg-blue)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Banner Image (Optional)</label>
+                    <input type="file" id="ban-image" accept="image/*">
+                    <small>Leave empty to keep existing image</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Banner</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

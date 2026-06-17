@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog - Chief Supplies</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #ffffff; color: #1a1a1a;">
+    <!-- Navbar (Scrolled state for white bg) -->
+    <header class="main-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo/Chief_Logo.webp" alt="Chief Logo">
+            </a>
+            <div class="nav-right">
+                <nav class="nav-links">
+                    <a href="catalog.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg> Shop</a>
+                    <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg> Booking</a>
+                    <a href="#">The Chief Journal</a>
+                </nav>
+                <div class="nav-actions">
+                    <a href="#" class="nav-login" aria-label="Login"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Catalog Header -->
+    <div class="catalog-header-section">
+        <div class="catalog-header-content">
+            <div class="ch-left">
+                <p class="ch-subtitle">CHIEF SUPPLIES</p>
+                <h1 class="ch-title">All Products</h1>
+            </div>
+            <p class="ch-count">9 products</p>
+        </div>
+    </div>
+
+    <!-- Catalog Main Content -->
+    <div class="catalog-layout">
+        <!-- Sidebar Filters -->
+        <aside class="catalog-sidebar">
+            <div class="sidebar-item switch-row">
+                <span class="si-title">In stock only</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            
+            <div class="sidebar-item accordion" onclick="toggleAccordion(this)">
+                <div class="si-header">
+                    <span class="si-title">Product Type</span>
+                    <svg class="icon-minus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
+                </div>
+                <div class="si-body">
+                    <button class="filter-btn active">All Products</button>
+                    <button class="filter-btn">Pomade</button>
+                    <button class="filter-btn">Shampoo</button>
+                    <button class="filter-btn">Dry Sand</button>
+                    <button class="filter-btn">Hair Care</button>
+                </div>
+            </div>
+            
+            <div class="sidebar-item accordion closed" onclick="toggleAccordion(this)">
+                <div class="si-header">
+                    <span class="si-title">Price</span>
+                    <svg class="icon-plus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                </div>
+                <div class="si-body">
+                    <button class="filter-btn">Under Rp 100.000</button>
+                    <button class="filter-btn">Rp 100.000 - Rp 200.000</button>
+                    <button class="filter-btn">Over Rp 200.000</button>
+                </div>
+            </div>
+            
+            <div class="sidebar-item accordion closed" onclick="toggleAccordion(this)">
+                <div class="si-header">
+                    <span class="si-title">Sort By</span>
+                    <svg class="icon-plus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                </div>
+                <div class="si-body">
+                    <button class="filter-btn">Featured</button>
+                    <button class="filter-btn">Price: Low to High</button>
+                    <button class="filter-btn">Price: High to Low</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Grid Area -->
+        <main class="catalog-main">
+            <div class="catalog-toolbar">
+                <div class="search-bar">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+                    <input type="text" placeholder="Search products...">
+                </div>
+                <span class="ch-count-mobile">9 products</span>
+            </div>
+
+            <div class="catalog-grid">
+                <!-- Card 1 -->
+                <div class="catalog-product-card">
+                    <div class="cpc-image-wrapper">
+                        <span class="badge black">BESTSELLER</span>
+                        <img src="avatar_1_1781250421781.png" alt="Hair Mask" style="opacity: 0; position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover;" class="hover-img">
+                        <img src="pomade_jar_1781250411744.png" alt="Hair Mask" class="main-img">
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-cart"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg> ADD TO CART</button>
+                        </div>
+                    </div>
+                    <div class="cpc-info">
+                        <h3>Chief Haircaviar Hair Mask</h3>
+                        <p class="category">Shampoo</p>
+                        <div class="cpc-price-row">
+                            <div class="cpc-price">
+                                <div class="rating">★★★★★</div>
+                                <span>Rp 100.000</span>
+                            </div>
+                            <a href="#" class="detail-link">DETAIL →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="catalog-product-card">
+                    <div class="cpc-image-wrapper">
+                        <span class="badge black">POPULER</span>
+                        <img src="product_clipper_1781352829774.png" alt="Junior Pomade" style="opacity: 0; position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover;" class="hover-img">
+                        <img src="pomade_jar_1781250411744.png" alt="Junior Pomade" class="main-img">
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-cart"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg> ADD TO CART</button>
+                        </div>
+                    </div>
+                    <div class="cpc-info">
+                        <h3>Chief Junior Pomade</h3>
+                        <p class="category">Pomade</p>
+                        <div class="cpc-price-row">
+                            <div class="cpc-price">
+                                <div class="rating">★★★★★</div>
+                                <span>Rp 104.000</span>
+                            </div>
+                            <a href="#" class="detail-link">DETAIL →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="catalog-product-card">
+                    <div class="cpc-image-wrapper">
+                        <img src="product_clipper_1781352829774.png" alt="Shampoo" class="main-img">
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-cart"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg> ADD TO CART</button>
+                        </div>
+                    </div>
+                    <div class="cpc-info">
+                        <h3>CHIEF Shampoo Dandruff Eliminator</h3>
+                        <p class="category">Shampoo</p>
+                        <div class="cpc-price-row">
+                            <div class="cpc-price">
+                                <div class="rating">★★★★★</div>
+                                <span>Rp 120.000</span>
+                            </div>
+                            <a href="#" class="detail-link">DETAIL →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="catalog-product-card">
+                    <div class="cpc-image-wrapper">
+                        <span class="badge black">NEW</span>
+                        <img src="product_clipper_1781352829774.png" alt="Dry Sand" class="main-img">
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-cart"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg> ADD TO CART</button>
+                        </div>
+                    </div>
+                    <div class="cpc-info">
+                        <h3>Chief Dry Sand</h3>
+                        <p class="category">Hair Care</p>
+                        <div class="cpc-price-row">
+                            <div class="cpc-price">
+                                <div class="rating">★★★★★</div>
+                                <span>Rp 115.000</span>
+                            </div>
+                            <a href="#" class="detail-link">DETAIL →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <img src="logo/Chief_Logo.webp" alt="Chief Logo" class="footer-logo">
+                <p>Toko perlengkapan grooming pria terlengkap. Dipersonalisasi oleh AI berdasarkan bentuk wajah Anda.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="footer-title">TOKO</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Semua Produk</a></li>
+                    <li><a href="#">AI Recommendation</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="footer-title">PERUSAHAAN</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Kontak</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="footer-title">HUBUNGI KAMI</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span>Jakarta, Indonesia</span>
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>hello@chiefsupplies.id</span>
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span>+62 812-3456-789</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p>&copy; 2026 Chief Supplies. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
