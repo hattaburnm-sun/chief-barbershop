@@ -2005,7 +2005,7 @@ input:checked + .slider:before {
     display: block;
     width: 22px;
     height: 2px;
-    background: #fff;
+    background: #1a1a1a;
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -2040,6 +2040,15 @@ input:checked + .slider:before {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.mobile-menu a:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
 }
 .mobile-menu a:hover {
     opacity: 0.6;
@@ -2166,7 +2175,7 @@ input:checked + .slider:before {
         position: static;
         transform: none;
         margin-top: 1rem;
-        align-self: flex-start;
+        align-self: center;
     }
 
     .left-text-box {
