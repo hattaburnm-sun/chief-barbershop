@@ -84,11 +84,12 @@ function render() {
         // Draw the image filling the canvas
         // Get the current scroll percentage to determine which frame to show
         let scrollFraction = 0;
-        const html = document.documentElement;
         
-        // Calculate how much we've scrolled within the hero section
-        // 500vh total, 100vh is the sticky height, so 400vh is the scrollable amount for the animation
-        const scrollableHeight = window.innerHeight * 4; 
+        // Calculate based on the actual hero container's scrollable height
+        const heroContainer = document.querySelector('.hero-container');
+        const scrollableHeight = heroContainer 
+            ? heroContainer.offsetHeight - window.innerHeight
+            : window.innerHeight * 4;
         
         if (window.scrollY > 0) {
             scrollFraction = Math.min(1, window.scrollY / scrollableHeight);
@@ -105,8 +106,8 @@ function render() {
         
         // Track the person: Animate the Try AI button upwards on scroll
         const bannerCenter = document.querySelector('.banner-center');
-        if (bannerCenter) {
-            // Adjust the multiplier to match the person's movement speed in the video
+        if (bannerCenter && window.innerWidth > 768) {
+            // Only animate on desktop; mobile uses static position
             const moveY = -(scrollFraction * window.innerHeight * 0.6); 
             bannerCenter.style.transform = `translate(-50%, ${moveY}px)`;
         }
@@ -123,14 +124,18 @@ function update() {
         scrollY = window.scrollY;
         render();
         
-        // Universal navbar background toggle
+    // Universal navbar background toggle
         const navbar = document.querySelector('.main-navbar');
         if (navbar) {
             // If there's a canvas, we wait until scroll passes the canvas
             const hasHero = document.getElementById('hero-lightpass');
             if (hasHero) {
-                const scrollFraction = scrollY / (window.innerHeight * 4);
-                if (scrollFraction >= 1) {
+                const heroContainer = document.querySelector('.hero-container');
+                const heroScrollable = heroContainer
+                    ? heroContainer.offsetHeight - window.innerHeight
+                    : window.innerHeight * 4;
+                const scrollFrac = scrollY / heroScrollable;
+                if (scrollFrac >= 1) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
@@ -438,4 +443,39 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchAndRenderBanners();
     fetchAndRenderArticles();
     handleBookingSubmit();
+
+    // ── Mobile Hamburger Menu ──
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+    if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    if (mobileMenuClose && mobileMenu) {
+        mobileMenuClose.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+    }
+
+    // Close mobile menu on outside click
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                closeMobileMenu();
+            }
+        });
+    }
 });
+
+function closeMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+}
